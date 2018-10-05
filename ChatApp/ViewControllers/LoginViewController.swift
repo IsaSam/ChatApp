@@ -34,11 +34,20 @@ class LoginViewController: UIViewController {
         let password = passwordField.text ?? ""
         
         PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
-            if let error = error {
-                print("User log in failed: \(error.localizedDescription)")
-            } else {
-                print("User logged in successfully")
-                // display view controller that needs to shown after successful login
+            
+            if username.isEmpty{
+                print("Please Enter your Username!")
+            } else if password.isEmpty{
+                print("Please Enter your Password!")
+            }
+            else{
+            
+                if let error = error {
+                    print("User log in failed: \(error.localizedDescription)")
+                } else {
+                    print("User logged in successfully")
+                    // display view controller that needs to shown after successful login
+                }
             }
         }
     }
