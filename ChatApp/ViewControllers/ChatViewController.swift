@@ -23,10 +23,10 @@ class ChatViewController: UIViewController {
         
         chatMessage.saveInBackground{(success: Bool, error: Error?) in
             if (success){
-                print("Successfully sent message \(Chatmessage)")
+                print("The message was saved Successfully")
                 self.messages.append(chatMessage)
-            }else{
-                print("Error to sending message")
+            }else if let error = error{
+                print("Problem saving message: \(error.localizedDescription)")
             }
         }
     }
