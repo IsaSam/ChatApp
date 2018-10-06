@@ -98,6 +98,9 @@
                                 <rect key="frame" x="320" y="80" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendMessageButton:" destination="S59-Ut-LEq" eventType="touchUpInside" id="YdZ-JA-xRI"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-T5-wdB">
                                 <rect key="frame" x="36" y="80" width="267" height="30"/>
@@ -111,6 +114,9 @@
                         <viewLayoutGuide key="safeArea" id="zla-gD-Hnt"/>
                     </view>
                     <navigationItem key="navigationItem" title="Chat" id="ChN-od-Fp1"/>
+                    <connections>
+                        <outlet property="chatMessageField" destination="bYf-T5-wdB" id="peR-5n-HSL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTY-hj-kTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,13 +7,32 @@
 //
 
 import UIKit
+import Parse
 
 class ChatViewController: UIViewController {
-
+    
+    @IBOutlet weak var chatMessageField: UITextField!
+    
+    var messages = [PFObject]()
+    
+    @IBAction func sendMessageButton(_ sender: Any) {
+        let Chatmessage = chatMessageField.text ?? ""
+        
+        let chatMessage = PFObject(className: "Message")
+        chatMessage["text"] = Chatmessage
+        
+        chatMessage.saveInBackground{(success: Bool, error: Error?) in
+            if (success){
+                print("Successfully sent message \(Chatmessage)")
+                self.messages.append(chatMessage)
+            }else{
+                print("Error to sending message")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +41,5 @@ class ChatViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
