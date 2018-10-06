@@ -57,13 +57,9 @@ class LoginViewController: UIViewController {
                     self.present(errorAlertController, animated: true)
                     print(error.localizedDescription)
  
-                }
-                /*if let error = error {
-                    print("User log in failed: \(error.localizedDescription)")
-                } */else {
+                }else {
                     print("Login Success")
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                    // display view controller that needs to shown after successful login
                     
                 }
             }
