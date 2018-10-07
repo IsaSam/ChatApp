@@ -44,13 +44,36 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        /*Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatViewController.onTimer), userInfo: nil, repeats: true)*/
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    @objc func onTimer() {
+        // Add code to be run periodically
+        
+        
+        let query = PFQuery(className: "Message")
+        query.order(byDescending: "createdAt")
+        query.includeKey("user")
+        query.findObjectsInBackground { (objects:[PFObject]?, error: Error?) -> Void in
+            if error==nil{
+                print("successfully retrieved \(objects!.count) messages")
+                
+                self.messages = objects!
+            }
+            else{
+                print("downloaded chat")
+                self.messages = objects!
+                self.tableView.reloadData()
+            }
+            }
+    }
     /*func onTimer(){
         
         var query = PFQuery(className:"Message")
@@ -66,6 +89,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }*/
+    /*
+    @objc func onTimer() {
+        //code to be run periodically
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return messages.count;
@@ -75,7 +103,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
         
         let chatMessage = messages[indexPath.row]
-        
         if let user = chatMessage["user"] as? PFUser {
             // User found! update username label with username
             cell.labelUser.text = user.username!+":"
