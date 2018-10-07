@@ -74,26 +74,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             }
     }
-    /*func onTimer(){
-        
-        var query = PFQuery(className:"Message")
-        query.findObjectsInBackground { (objects:[PFObject]?, error: Error?) -> Void in
-            if error==nil{
-                print("successfully retrieved \(objects!.count) messages")
-                
-                self.messages = objects!
-            }
-            else{
-                
-            }
-            
-        }
-    }*/
-    /*
-    @objc func onTimer() {
-        //code to be run periodically
-        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
-    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return messages.count;
