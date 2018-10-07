@@ -13,6 +13,7 @@
 		96444BD721678DFA006FBEC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96444BD521678DFA006FBEC3 /* LaunchScreen.storyboard */; };
 		96444BE021679C6D006FBEC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96444BDF21679C6D006FBEC3 /* LoginViewController.swift */; };
 		96444BE82168550E006FBEC3 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96444BE72168550E006FBEC3 /* ChatViewController.swift */; };
+		96444BF22169B05B006FBEC3 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96444BF12169B05B006FBEC3 /* ChatCell.swift */; };
 		E3399D958C277C69660F47DD /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C390FC4FE29B20E346E2CB /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		96444BD821678DFA006FBEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96444BDF21679C6D006FBEC3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96444BE72168550E006FBEC3 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		96444BF12169B05B006FBEC3 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		96444BCB21678DF6006FBEC3 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				96444BF02169B044006FBEC3 /* Views */,
 				96444BDE21679BDB006FBEC3 /* ViewControllers */,
 				96444BCC21678DF6006FBEC3 /* AppDelegate.swift */,
 				96444BD021678DF6006FBEC3 /* Main.storyboard */,
@@ -89,6 +92,14 @@
 				96444BE72168550E006FBEC3 /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		96444BF02169B044006FBEC3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96444BF12169B05B006FBEC3 /* ChatCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D1D3405C4E45241E05243BA8 /* Frameworks */ = {
@@ -214,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96444BE021679C6D006FBEC3 /* LoginViewController.swift in Sources */,
+				96444BF22169B05B006FBEC3 /* ChatCell.swift in Sources */,
 				96444BE82168550E006FBEC3 /* ChatViewController.swift in Sources */,
 				96444BCD21678DF6006FBEC3 /* AppDelegate.swift in Sources */,
 			);

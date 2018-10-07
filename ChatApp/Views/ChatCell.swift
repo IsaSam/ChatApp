@@ -10,9 +10,11 @@ import UIKit
 
 class ChatCell: UITableViewCell {
 
+    @IBOutlet weak var labelMessage: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

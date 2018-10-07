@@ -113,6 +113,28 @@
                                     <constraint firstAttribute="width" constant="375" id="pod-E8-6eQ"/>
                                     <constraint firstAttribute="height" constant="542" id="wco-DU-458"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="U51-5x-iBt" customClass="ChatCell" customModule="ChatApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U51-5x-iBt" id="Ves-b4-x9J">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3k-Sg-DwJ">
+                                                    <rect key="frame" x="15" y="12" width="128" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelMessage" destination="M3k-Sg-DwJ" id="yF7-6V-5JB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a message here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-T5-wdB">
                                 <rect key="frame" x="8" y="81" width="293" height="30"/>
@@ -133,6 +155,7 @@
                     <navigationItem key="navigationItem" title="ChatApp" id="ChN-od-Fp1"/>
                     <connections>
                         <outlet property="chatMessageField" destination="bYf-T5-wdB" id="peR-5n-HSL"/>
+                        <outlet property="tableView" destination="Hyw-3w-Lp1" id="wvP-U6-gXl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTY-hj-kTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,7 +170,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TW0-Od-xgs">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="1" green="0.41960784309999999" blue="0.1960784314" alpha="0.64586900680000003" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.68991909900000004" green="0.2904892375" blue="0.13987531989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

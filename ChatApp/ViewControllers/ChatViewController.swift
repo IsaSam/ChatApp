@@ -9,9 +9,11 @@
 import UIKit
 import Parse
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatMessageField: UITextField!
+    //@IBOutlet weak var labelMessage: UILabel!
     
     var messages = [PFObject]()
     
@@ -25,6 +27,9 @@ class ChatViewController: UIViewController {
             if (success){
                 print("The message was saved Successfully")
                 self.messages.append(chatMessage)
+                
+                self.tableView.reloadData()
+                
             }else if let error = error{
                 print("Problem saving message: \(error.localizedDescription)")
             }
@@ -33,6 +38,11 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +50,17 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return messages.count;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        
+        let chatMessage = messages[indexPath.row]
+        cell.labelMessage.text = (chatMessage["text"] as! String)
+        
+        return cell
+    }
 
 
 }
