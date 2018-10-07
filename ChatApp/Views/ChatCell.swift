@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatCell: UITableViewCell {
-
+    @IBOutlet weak var labelUser: UILabel!
     @IBOutlet weak var labelMessage: UILabel!
     
     override func awakeFromNib() {
