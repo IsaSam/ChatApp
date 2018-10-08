@@ -28,12 +28,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (success){
                 print("The message was saved Successfully by \(currentUser)")
                 self.messages.append(chatMessage)
-                
                 self.tableView.reloadData()
                 
-            }else if let error = error{
-                print("Problem saving message: \(error.localizedDescription)")
             }
+            else if let error = error{
+                let errorAlertController = UIAlertController(title: "Problem saving message", message: "Please, Check your internet Connection", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                errorAlertController.addAction(cancelAction)
+                self.present(errorAlertController, animated: true)
+                print(error.localizedDescription) }
+            /*
+            else if let error = error{
+                print("Problem saving message: \(error.localizedDescription)")
+            }*/
         }
     }
     
@@ -45,9 +52,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        /*Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatViewController.onTimer), userInfo: nil, repeats: true)*/
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
-        tableView.reloadData()
+        Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,16 +62,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     @objc func onTimer() {
         // Add code to be run periodically
-        
-        
         let query = PFQuery(className: "Message")
-        query.order(byDescending: "createdAt")
+        //query.order(byDescending: "createdAt")
+        query.addDescendingOrder("createdAt")
         query.includeKey("user")
         query.findObjectsInBackground { (objects:[PFObject]?, error: Error?) -> Void in
             if error==nil{
                 print("successfully retrieved \(objects!.count) messages")
                 
                 self.messages = objects!
+                self.tableView.reloadData()
             }
             else{
                 print("downloaded chat")
@@ -91,9 +97,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.labelUser.text = "🤖"
         }
         cell.labelMessage.text = (chatMessage["text"] as! String)
-        
         return cell
-    }
 
+    }
 
 }
