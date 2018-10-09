@@ -124,7 +124,6 @@ class LoginViewController: UIViewController {
                 alertController.addAction(OKAction)
                 self.AcitivityIndicator.stopAnimating()
                 // manually segue to logged in view
-                //self.AcitivityIndicator.startAnimating()
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }

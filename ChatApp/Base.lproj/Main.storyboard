@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,23 +129,21 @@
                                                     <color key="textColor" red="0.73931234140000002" green="0.3201431414" blue="0.16583673299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3k-Sg-DwJ">
-                                                    <rect key="frame" x="83" y="12" width="284" height="17"/>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3k-Sg-DwJ">
+                                                    <rect key="frame" x="83" y="5" width="284" height="28"/>
+                                                    <color key="backgroundColor" red="0.96862745098039216" green="0.90588235294117647" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="0.41960784309999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="M3k-Sg-DwJ" firstAttribute="top" secondItem="Ves-b4-x9J" secondAttribute="top" constant="12" id="5CT-lf-FWb"/>
+                                                <constraint firstItem="M3k-Sg-DwJ" firstAttribute="top" secondItem="Ves-b4-x9J" secondAttribute="top" constant="5" id="5CT-lf-FWb"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M3k-Sg-DwJ" secondAttribute="trailing" constant="6.5" id="5oc-Ka-IOV"/>
-                                                <constraint firstAttribute="bottom" secondItem="M3k-Sg-DwJ" secondAttribute="bottom" constant="12.5" id="Idc-0A-YkL"/>
-                                                <constraint firstItem="M3k-Sg-DwJ" firstAttribute="top" secondItem="Ves-b4-x9J" secondAttribute="topMargin" constant="1" id="M9E-hz-o0C"/>
-                                                <constraint firstItem="M3k-Sg-DwJ" firstAttribute="top" secondItem="Ves-b4-x9J" secondAttribute="topMargin" constant="1" id="SMf-TK-cPO"/>
+                                                <constraint firstAttribute="bottom" secondItem="M3k-Sg-DwJ" secondAttribute="bottom" constant="8.5" id="Idc-0A-YkL"/>
                                                 <constraint firstItem="M3k-Sg-DwJ" firstAttribute="leading" secondItem="zNw-Qe-3I1" secondAttribute="trailing" constant="5" id="UQJ-Ye-ZPA"/>
                                                 <constraint firstAttribute="bottom" secondItem="zNw-Qe-3I1" secondAttribute="bottom" constant="14.5" id="Vai-fz-G47"/>
                                                 <constraint firstItem="zNw-Qe-3I1" firstAttribute="top" secondItem="Ves-b4-x9J" secondAttribute="top" constant="13" id="cOG-5G-Moh"/>
-                                                <constraint firstItem="M3k-Sg-DwJ" firstAttribute="top" secondItem="Ves-b4-x9J" secondAttribute="top" constant="12" id="cnH-gF-dX7"/>
                                                 <constraint firstItem="zNw-Qe-3I1" firstAttribute="leading" secondItem="Ves-b4-x9J" secondAttribute="leading" constant="9" id="q7N-2v-kO3"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -183,12 +180,21 @@
                                 <color key="textColor" red="0.68991909900000004" green="0.2904892375" blue="0.13987531989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aSY-Mc-vbc">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="1" green="0.43137254899999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.90196078430000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aSY-Mc-vbc" firstAttribute="centerX" secondItem="4AA-xF-qgL" secondAttribute="centerX" id="Ndx-tg-5xE"/>
+                            <constraint firstItem="aSY-Mc-vbc" firstAttribute="centerY" secondItem="4AA-xF-qgL" secondAttribute="centerY" id="qpm-94-fcC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zla-gD-Hnt"/>
                     </view>
                     <navigationItem key="navigationItem" title="ChatApp" id="ChN-od-Fp1"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="aSY-Mc-vbc" id="MSD-Yd-FD8"/>
                         <outlet property="chatMessageField" destination="bYf-T5-wdB" id="peR-5n-HSL"/>
                         <outlet property="labelWelcome" destination="4EQ-bq-BfD" id="daW-xr-zYU"/>
                         <outlet property="tableView" destination="Hyw-3w-Lp1" id="wvP-U6-gXl"/>
