@@ -16,11 +16,13 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var AcitivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "ChatApp"
         // Do any additional setup after loading the view.
+        AcitivityIndicator.stopAnimating()
     }
 
 
@@ -30,6 +32,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLoginButton(_ sender: Any) {
+        
+        self.AcitivityIndicator.startAnimating()
+        
         let username = usernameField.text ?? ""
         let password = passwordField.text ?? ""
         
@@ -38,9 +43,12 @@ class LoginViewController: UIViewController {
             if username.isEmpty{
                 let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
                 let alertController = UIAlertController(title: "Username Failed!", message: "Please Enter your Username.", preferredStyle: .alert)
+                
                 self.present(alertController, animated: true, completion: nil)
                 // add the OK action to the alert controller
                 alertController.addAction(OKAction)
+                self.AcitivityIndicator.stopAnimating()
+                
             }
             else if password.isEmpty{
                 let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
@@ -48,6 +56,7 @@ class LoginViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 // add the OK action to the alert controller
                 alertController.addAction(OKAction)
+                self.AcitivityIndicator.stopAnimating()
             }
             else{
                 if let error = error{
@@ -56,8 +65,11 @@ class LoginViewController: UIViewController {
                     errorAlertController.addAction(cancelAction)
                     self.present(errorAlertController, animated: true)
                     print(error.localizedDescription)
+                    self.AcitivityIndicator.stopAnimating()
+                    
  
                 }else {
+                    self.AcitivityIndicator.startAnimating()
                     print("Login Success")
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                     
@@ -67,6 +79,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignUpButton(_ sender: Any) {
+        
+        self.AcitivityIndicator.startAnimating()
+        
         // initialize a user object
         let newUser = PFUser()
         
@@ -83,6 +98,7 @@ class LoginViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 // add the OK action to the alert controller
                 alertController.addAction(OKAction)
+                self.AcitivityIndicator.stopAnimating()
             }
             else if (newUser.password?.isEmpty)!{
                 let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
@@ -90,6 +106,7 @@ class LoginViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 // add the OK action to the alert controller
                 alertController.addAction(OKAction)
+                self.AcitivityIndicator.stopAnimating()
             }
             
             if let error = error{
@@ -98,13 +115,16 @@ class LoginViewController: UIViewController {
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
                 print(error.localizedDescription)
+                self.AcitivityIndicator.stopAnimating()
             }else {
                 let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
                 let alertController = UIAlertController(title: "Registered Success!", message: "Now Enter your Username and password to Login.", preferredStyle: .alert)
                 self.present(alertController, animated: true, completion: nil)
                 // add the OK action to the alert controller
                 alertController.addAction(OKAction)
+                self.AcitivityIndicator.stopAnimating()
                 // manually segue to logged in view
+                //self.AcitivityIndicator.startAnimating()
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }

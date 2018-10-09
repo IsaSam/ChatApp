@@ -15,7 +15,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="loginView" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -73,11 +73,20 @@
                                     <action selector="onSignUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mrw-E9-LVG"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rmm-xz-iRv">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="1" green="0.43137254899999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rmm-xz-iRv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="688-OX-HDA"/>
+                            <constraint firstItem="Rmm-xz-iRv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="emD-dr-SS3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="AcitivityIndicator" destination="Rmm-xz-iRv" id="G6z-U2-Gse"/>
                         <outlet property="passwordField" destination="0WN-fS-8C3" id="0GR-hg-l7k"/>
                         <outlet property="usernameField" destination="ccJ-jh-pJF" id="a59-up-7oo"/>
                         <segue destination="Sll-cx-zBg" kind="presentation" identifier="loginSegue" id="4O1-Hc-K2J"/>
@@ -90,11 +99,19 @@
         <!--ChatApp-->
         <scene sceneID="hjt-ds-6MI">
             <objects>
-                <viewController id="S59-Ut-LEq" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatviewcontroller" title="ChatApp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="S59-Ut-LEq" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4AA-xF-qgL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGR-dh-QFm">
+                                <rect key="frame" x="151" y="19" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="ChatApp">
+                                    <color key="titleColor" red="1" green="0.43137254899999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hyw-3w-Lp1">
                                 <rect key="frame" x="0.0" y="127" width="375" height="540"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -114,7 +131,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3k-Sg-DwJ">
-                                                    <rect key="frame" x="83" y="12" width="285" height="17"/>
+                                                    <rect key="frame" x="83" y="12" width="284" height="17"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -159,6 +176,13 @@
                                     <action selector="sendMessageButton:" destination="S59-Ut-LEq" eventType="touchUpInside" id="YdZ-JA-xRI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EQ-bq-BfD">
+                                <rect key="frame" x="101" y="64" width="173" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <color key="textColor" red="0.68991909900000004" green="0.2904892375" blue="0.13987531989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.90196078430000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="zla-gD-Hnt"/>
@@ -166,6 +190,7 @@
                     <navigationItem key="navigationItem" title="ChatApp" id="ChN-od-Fp1"/>
                     <connections>
                         <outlet property="chatMessageField" destination="bYf-T5-wdB" id="peR-5n-HSL"/>
+                        <outlet property="labelWelcome" destination="4EQ-bq-BfD" id="daW-xr-zYU"/>
                         <outlet property="tableView" destination="Hyw-3w-Lp1" id="wvP-U6-gXl"/>
                     </connections>
                 </viewController>
@@ -182,8 +207,14 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.68991909900000004" green="0.2904892375" blue="0.13987531989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pfN-Je-SBO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="S59-Ut-LEq" kind="relationship" relationship="rootViewController" id="JHU-Rk-vzL"/>
                     </connections>
