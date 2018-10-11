@@ -21,10 +21,68 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var messages = [PFObject]()
     var refreshControl: UIRefreshControl!
-    //let welcomeMessage = labelWelcome.text
-
     
     @IBAction func sendMessageButton(_ sender: Any) {
+        messagePush()
+    }
+    func messagePush(){
+        let Chatmessage = chatMessageField.text ?? ""
+        let currentUser = PFUser.current()!
+        let chatMessage = PFObject(className: "Message")
+        chatMessage["text"] = Chatmessage
+        chatMessage["user"] = currentUser
+        
+        chatMessage.saveInBackground{(success: Bool, error: Error?) in
+        if (success){
+        print("The message was saved Successfully by \(currentUser)")
+        self.messages.append(chatMessage)
+        self.tableView.reloadData()
+        self.chatMessageField.text = ""
+        }
+        else if let error = error{
+        let errorAlertController = UIAlertController(title: "Problem saving message", message: "Please, Check your internet Connection", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+        errorAlertController.addAction(cancelAction)
+        self.present(errorAlertController, animated: true)
+        print(error.localizedDescription) }
+        /*
+         else if let error = error{
+         print("Problem saving message: \(error.localizedDescription)")
+         }*/
+        }
+    }
+    
+    @IBAction func messageOnEnterPress(_ sender: Any) {
+        //print("Enter pressed")
+        messagePush()
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        self.chatMessageField.delegate = self as? UITextFieldDelegate
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationItem.title = "ChatApp"
+        
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+
+        Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        //activityIndicator.stopAnimating()
+        if let currentUser = PFUser.current() {
+             labelWelcome.text = "Welcome back \(currentUser.username!) 😀"
+        }else {
+            let user = PFUser()
+            labelWelcome.text = "Welcome \(user)"
+        }
+        self.tableView.reloadData()
+
+    }
+    func performAction(){
         let Chatmessage = chatMessageField.text ?? ""
         let currentUser = PFUser.current()!
         let chatMessage = PFObject(className: "Message")
@@ -45,39 +103,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.present(errorAlertController, animated: true)
                 print(error.localizedDescription) }
             /*
-            else if let error = error{
-                print("Problem saving message: \(error.localizedDescription)")
-            }*/
+             else if let error = error{
+             print("Problem saving message: \(error.localizedDescription)")
+             }*/
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationItem.title = "ChatApp"
-        
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
-
-        Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
-        //activityIndicator.stopAnimating()
-        if let currentUser = PFUser.current() {
-            //activityIndicator.stopAnimating()
-            //print("Welcome back \(currentUser.username!) 😀")
-             labelWelcome.text = "Welcome back \(currentUser.username!) 😀"
-                
-                // TODO: Load Chat view controller and set as root view controller
-            
-        }else {
-            let user = PFUser()
-            labelWelcome.text = "Welcome \(user)"
-        }
-        self.tableView.reloadData()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,7 +148,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
             //cell.labelMessage.textColor = UIColor(red:0.60, green:0.60, blue:0.60, alpha:1.0)
-            
         }
         else
         {
@@ -127,9 +155,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.layer.cornerRadius = 22.0
             
         }
-        
         let chatMessage = messages[indexPath.row]
-
         //cell.labelMessage.layer.cornerRadius = 10.0
         
         if let user = chatMessage["user"] as? PFUser {
@@ -140,10 +166,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.labelUser.text = "🤖"
         }
         cell.labelMessage.text = (chatMessage["text"] as! String)
-        
         return cell
-
     }
-    
-
 }

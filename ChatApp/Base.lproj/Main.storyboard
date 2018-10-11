@@ -159,6 +159,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="messageOnEnterPress:" destination="S59-Ut-LEq" eventType="primaryActionTriggered" id="TJJ-ZG-JyE"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LN-La-DBJ">
                                 <rect key="frame" x="325" y="85" width="40" height="28"/>
