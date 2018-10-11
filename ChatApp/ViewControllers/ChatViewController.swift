@@ -115,8 +115,22 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
         
+        if (indexPath.row % 2 == 0) {
+            
+            cell.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+            //cell.labelMessage.textColor = UIColor(red:0.60, green:0.60, blue:0.60, alpha:1.0)
+            
+        }
+        else
+        {
+            cell.backgroundColor = UIColor(red:1.00, green:0.97, blue:0.95, alpha:1.0)
+            cell.layer.cornerRadius = 22.0
+            
+        }
+        
         let chatMessage = messages[indexPath.row]
-        cell.labelMessage.layer.cornerRadius = 10.0
+
+        //cell.labelMessage.layer.cornerRadius = 10.0
         
         if let user = chatMessage["user"] as? PFUser {
             // User found! update username label with username
@@ -126,6 +140,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.labelUser.text = "🤖"
         }
         cell.labelMessage.text = (chatMessage["text"] as! String)
+        
         return cell
 
     }
