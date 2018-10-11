@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController {
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
                 print(error.localizedDescription)
-                //self.AcitivityIndicator.stopAnimating()
+                self.AcitivityIndicator.stopAnimating()
             }else {
                 PFUser.logOut()
                 
