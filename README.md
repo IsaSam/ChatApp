@@ -41,7 +41,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='ChapAppVideo.gif' title='Chat Video Walkthrough' width='' alt='ChatApp Walkthrough' />
+<img src='ChatAppVideo.gif' title='Chat Video Walkthrough' width='' alt='ChatApp Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
