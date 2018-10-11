@@ -57,6 +57,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messagePush()
         
     }
+    @IBAction func logOutButtonPress(_ sender: Any) {
+    PFUser.logOut()
+        let Login = storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+        //self.presentedViewController(Login, animated: true, completion: nil)
+        self.present(Login, animated: true, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
