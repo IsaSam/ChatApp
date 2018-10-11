@@ -21,16 +21,16 @@ The following **stretch** user stories are implemented:
 - [X] User sees an activity indicator while waiting for authentication (+1pt)
 - [ ] User can pull to refresh Chat feed (+1pt)
 - [ ] Add an "Adorable Avatar" for each user by requesting an avatar from the [Adorable Avatars API](https://github.com/adorableio/avatars-api) (+2pt)
-- [] Chat Bubble Style Design (+3pt)
-       [X] Remove table view row outlines in viewDidLoad()
+- [X] Chat Bubble Style Design (+3pt)
+- [X] Remove table view row outlines in viewDidLoad()
 - [ ] Expand or contract the cell layout as needed to show the chat message author (user) if it exists (+2pt)
 
 The following **additional** user stories are implemented:
 
 - [X] List anything else that you can get done to improve the app functionality! (+1-3pts)
-      [X] When User tap on Sign Up button a resgister View form appear, after registered he return automatically to the login view after a confirmed message.
-      [X] User can log Out session 
-      [X] User can also send message with the return key
+- [X] When User tap on Sign Up button a resgister View form appear, after registered he return automatically to the login view after a confirmed message.
+- [X] User can log Out session 
+- [X] User can also send message with the return key
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
