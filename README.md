@@ -2,7 +2,7 @@
 
 **Chat Client** is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
 
-Time spent: **...** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -28,6 +28,7 @@ The following **stretch** user stories are implemented:
 The following **additional** user stories are implemented:
 
 - [X] List anything else that you can get done to improve the app functionality! (+1-3pts)
+      [X] When User tap on Sign Up button a resgister View form appear, after registered he return automatically to the login view after a confirmed message.
       [X] User can log Out session 
       [X] User can also send message with the return key
 

@@ -79,54 +79,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignUpButton(_ sender: Any) {
-        
-        self.AcitivityIndicator.startAnimating()
-        
-        // initialize a user object
-        let newUser = PFUser()
-        
-        // set user properties
-        newUser.username = usernameField.text
-        newUser.password = passwordField.text
-        
-        // call sign up function on the object
-        newUser.signUpInBackground { (success: Bool, error: Error?) in
-            
-            if (newUser.username?.isEmpty)!{
-                let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
-                let alertController = UIAlertController(title: "Username is Required!", message: "Please Choose your Username.", preferredStyle: .alert)
-                self.present(alertController, animated: true, completion: nil)
-                // add the OK action to the alert controller
-                alertController.addAction(OKAction)
-                self.AcitivityIndicator.stopAnimating()
-            }
-            else if (newUser.password?.isEmpty)!{
-                let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
-                let alertController = UIAlertController(title: "Password is Required!", message: "Please Enter a New Password.", preferredStyle: .alert)
-                self.present(alertController, animated: true, completion: nil)
-                // add the OK action to the alert controller
-                alertController.addAction(OKAction)
-                self.AcitivityIndicator.stopAnimating()
-            }
-            
-            if let error = error{
-                let errorAlertController = UIAlertController(title: "Sign up Failed!!!", message: "Account Already Exist for this username or Check your internet Connection", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-                errorAlertController.addAction(cancelAction)
-                self.present(errorAlertController, animated: true)
-                print(error.localizedDescription)
-                self.AcitivityIndicator.stopAnimating()
-            }else {
-                let OKAction = UIAlertAction(title: "OK", style: .default){(action) in}
-                let alertController = UIAlertController(title: "Registered Success!", message: "Now Enter your Username and password to Login.", preferredStyle: .alert)
-                self.present(alertController, animated: true, completion: nil)
-                // add the OK action to the alert controller
-                alertController.addAction(OKAction)
-                self.AcitivityIndicator.stopAnimating()
-                // manually segue to logged in view
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }
-        }
+
     }
     
 

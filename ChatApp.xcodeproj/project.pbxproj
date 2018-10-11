@@ -14,6 +14,7 @@
 		96444BE021679C6D006FBEC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96444BDF21679C6D006FBEC3 /* LoginViewController.swift */; };
 		96444BE82168550E006FBEC3 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96444BE72168550E006FBEC3 /* ChatViewController.swift */; };
 		96444BF22169B05B006FBEC3 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96444BF12169B05B006FBEC3 /* ChatCell.swift */; };
+		96AFB0C1216F08BB0086A04A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFB0C0216F08BB0086A04A /* SignUpViewController.swift */; };
 		E3399D958C277C69660F47DD /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C390FC4FE29B20E346E2CB /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		96444BDF21679C6D006FBEC3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96444BE72168550E006FBEC3 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		96444BF12169B05B006FBEC3 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		96AFB0C0216F08BB0086A04A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				96444BDF21679C6D006FBEC3 /* LoginViewController.swift */,
 				96444BE72168550E006FBEC3 /* ChatViewController.swift */,
+				96AFB0C0216F08BB0086A04A /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				96444BF22169B05B006FBEC3 /* ChatCell.swift in Sources */,
 				96444BE82168550E006FBEC3 /* ChatViewController.swift in Sources */,
 				96444BCD21678DF6006FBEC3 /* AppDelegate.swift in Sources */,
+				96AFB0C1216F08BB0086A04A /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
